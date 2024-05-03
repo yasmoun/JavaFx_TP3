@@ -11,7 +11,6 @@ public class EditingCell extends TableCell<Person, String> {
         // Initialisation du TextField
         textField = new TextField();
         
-        // Configuration de l'action de double-clic pour commencer l'édition
         this.setOnMouseClicked(event -> {
             if (event.getClickCount() == 2 && !isEmpty()) {
                 startEdit();
@@ -23,14 +22,11 @@ public class EditingCell extends TableCell<Person, String> {
     public void startEdit() {
         super.startEdit();
         
-        // Affichage du texte dans le TextField
         textField.setText(getItem());
         setText(null);
         
-        // Ajout du TextField à la cellule
         setGraphic(textField);
         
-        // Sélection du texte dans le TextField
         textField.selectAll();
     }
 
@@ -38,10 +34,8 @@ public class EditingCell extends TableCell<Person, String> {
     public void cancelEdit() {
         super.cancelEdit();
         
-        // Suppression du TextField de la cellule
         setGraphic(null);
         
-        // Affichage du texte dans la cellule
         setText(getItem());
     }
 
@@ -54,11 +48,9 @@ public class EditingCell extends TableCell<Person, String> {
             setGraphic(null);
         } else {
             if (isEditing()) {
-                // Affichage du TextField lors de l'édition
                 setText(null);
                 setGraphic(textField);
             } else {
-                // Affichage du texte normal dans la cellule
                 setText(getItem());
                 setGraphic(null);
             }
